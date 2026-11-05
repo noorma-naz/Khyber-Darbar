@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book A Table | Khyber Darbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #800020;    
+            --secondary-color: #D4AF37;  
+            --bg-white: #FFFFFF;
+            --text-dark: #222222;
+            --accent-black: #111111;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --transition-smooth: all 0.4s ease;
+        }
+
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body { 
+            font-family: var(--font-sans); 
+           
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            color: #fff; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            padding-top: 100px; /* Space for Navbar */
+            min-height: 100vh;
+        }
+
+         .container {  
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+         }
+
+.navbar { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 999; 
+    padding: 1.5rem 0; 
+    transition: var(--transition-smooth); 
+    background: rgba(0,0,0,0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.navbar__container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar__logo { 
+    font-family: var(--font-display); 
+    font-size: 1.8rem; 
+    color: var(--secondary-color); 
+    text-decoration: none; 
+    font-weight: 700; 
+}
+
+.navbar__menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+}
+
+.navbar__link { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: var(--transition-smooth);
+}
+
+.navbar__link.active, .navbar__link:hover { 
+    color: var(--secondary-color); 
+}
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.navbar__toggle .bar {
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    transition: var(--transition-smooth);
+}
+
+        .reservation-section {
+            padding: 4rem 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;    
+            min-height: calc(100vh - 100px);
+        }
+
+        .reservation-card {
+            background: rgba(17, 17, 17, 0.85); 
+            border: 1px solid var(--secondary-color);
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            /* Frosted Glass Blur effect */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header__subtitle {
+            font-family: var(--font-display);
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-header__title {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        .form-header__line {
+            width: 80px;
+            height: 2px;
+            background: var(--secondary-color);
+            margin: 1rem auto 0;
+        }
+
+       
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group--full {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 650px) {
+            .form-group--full {
+                grid-column: span 1;
+            }
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid #333;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background: #222;
+        }
+
+        select.form-control option {
+            background: #111;
+            color: #fff;
+        }
+
+       
+        .btn { 
+            display: block;
+            width: 100%;
+            padding: 1rem; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            cursor: pointer; 
+            transition: var(--transition-smooth); 
+            border: 1px solid transparent; 
+            text-decoration: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .btn--primary { 
+            background: var(--primary-color); 
+            color: #fff; 
+            border-color: var(--primary-color);
+        }
+
+        .btn--primary:hover { 
+            background: transparent; 
+            border-color: var(--secondary-color); 
+            color: var(--secondary-color); 
+        }
+
+      
+        .footer { 
+            background: #0a0a0a; 
+            color: #fff; 
+            padding: 4rem 0 2rem; 
+            border-top: 2px solid var(--secondary-color);
+            margin-top: 4rem;
+        }
+
+        .footer__col {
+            margin-bottom: 2rem;
+        }
+
+        .footer__logo { 
+            font-family: var(--font-display); 
+            color: var(--secondary-color); 
+            font-size: 1.8rem; 
+            margin-bottom: 1rem; 
+        }
+
+        .footer__text { font-size: 0.85rem; color: #bbb; }
+        .footer__title { font-family: var(--font-display); color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1.2rem; }
+        .footer__links { list-style: none; }
+        .footer__links a { color: #ccc; text-decoration: none; font-size: 0.85rem; line-height: 2.2; transition: var(--transition-smooth); }
+        .footer__links a:hover { color: var(--secondary-color); }
+        .footer__socials { margin-top: 1.5rem; }
+        .footer__socials a { color: #fff; margin-right: 1.2rem; font-size: 1.3rem; transition: var(--transition-smooth); }
+        .footer__socials a:hover { color: var(--secondary-color); }
+        .footer__bottom { text-align: center; margin-top: 3rem; font-size: 0.8rem; color: #555; padding-top: 1.5rem; border-top: 1px solid #222;}
+
+        
+        .grid { display: grid; gap: 2rem; }
+        .grid--4-cols { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+        
+        @media screen and (max-width: 992px) {
+            .navbar__menu { gap: 1.2rem; }
+        }
+
+       
+        @media screen and (max-width: 768px) {
+            .reservation-section { padding: 2rem 0; }
+            .reservation-card { padding: 1.8rem; }
+            .form-header__title { font-size: 2.2rem; }
+
+            
+            .navbar__toggle { display: flex; } /* Show Hamburger */
+            
+            .navbar__menu {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 3rem;
+                gap: 2.5rem;
+                transition: all 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+            }
+
+            
+            .navbar__menu.mobile-active {
+                left: 0;
+            }
+
+            .navbar__link {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">Khyber Darbar</a>
+            <ul class="navbar__menu">
+                <li><a href="index.html" class="navbar__link ">Home</a></li>
+                <li><a href="menu.html" class="navbar__link">Menu</a></li>
+                <li><a href="offers.html" class="navbar__link">Special Offers</a></li>
+                <li><a href="reservation.html" class="navbar__link active">Reservation</a></li>
+            </ul>
+            
+            </div>
+        </div>
+    </nav>
+
+    <section class="reservation-section">
+        <div class="container">
+            <div class="reservation-card">
+                
+                <div class="form-header">
+                    <span class="form-header__subtitle">Mehmaan Nawazi</span>
+                    <h2 class="form-header__title">Book A Shahi Table</h2>
+                    <div class="form-header__line"></div>
+                </div>
+
+                <form id="shahiReservationForm">
+                    <div class="form-grid">
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="e.g., +92 300 1234567" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="guestCount">Number of People</label>
+                            <select id="guestCount" class="form-control" required>
+                                <option value="" disabled selected>Select number of people</option>
+                                <option value="1-2">1 to 2 Persons</option>
+                                <option value="3-4">3 to 4 Persons</option>
+                                <option value="5-6">5 to 6 Persons</option>
+                                <option value="7-10">7 to 10 Persons (Family Setup)</option>
+                                <option value="10+">More than 10 Persons</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="tableType">Table Ambiance / Experience</label>
+                            <select id="tableType" class="form-control" required>
+                                <option value="" disabled selected>Select experience type</option>
+                                <option value="Local">Local Traditional Table (Takht Setup)</option>
+                                <option value="Lavish">Lavish Royal Premium (VIP Fine Dining)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resDateTime">Preferred Date & Time</label>
+                            <input type="datetime-local" id="resDateTime" class="form-control" required>
+                        </div>
+
+                        <!-- Added Discount Code Field -->
+                        <div class="form-group">
+                            <label class="form-label" for="discountCode">Discount Code (Optional)</label>
+                            <input type="text" id="discountCode" class="form-control" placeholder="e.g., KHYBER10">
+                        </div>
+
+                        <div class="form-group form-group--full">
+                            <label class="form-label" for="notes">Any Special Requests / Event Occasion</label>
+                            <textarea id="notes" class="form-control" rows="3" placeholder="Birthday, Anniversary setup, or special seating requirements (Optional)"></textarea>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">Confirm Reservation</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container grid grid--4-cols">
+            <div class="footer__col">
+                <h3 class="footer__logo">Khyber Darbar</h3>
+                <p class="footer__text">Setting transcendent benchmarks in traditional culinary artistry and elite cultural hospitality across generations.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Our Menu</a></li>
+                    <li><a href="offers.html">Special Offers</a></li>
+                    <li><a href="reservation.html">Book A Table</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Timings</h4>
+                <p class="footer__text"><strong>Monday - Sunday:</strong><br>12:00 PM – 12:00 AM</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Contact</h4>
+                <p class="footer__text">Luxury District, Karachi, Pakistan<br>Phone: +92 21 111-KHYBER</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Khyber Darbar Luxury Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // Mobile Menu Toggle Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navbarMenu = document.querySelector('.navbar__menu');
+            const navbarLinks = document.querySelectorAll('.navbar__link');
+
+            if (mobileMenuBtn && navbarMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('mobile-active');
+                });
+            }
+
+            navbarLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (navbarMenu) {
+                        navbarMenu.classList.remove('mobile-active');
+                    }
+                });
+            });
+
+            // Handle form submission
+            const reservationForm = document.getElementById('shahiReservationForm');
+            if (reservationForm) {
+                reservationForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+
+                    const name = document.getElementById('fullName').value;
+                    const guests = document.getElementById('guestCount').value;
+                    const experience = document.getElementById('tableType').value;
+                    const discount = document.getElementById('discountCode').value.trim();
+
+                    // Craft base alert message
+                    let alertMessage = "your table is reserved\n\nThank you " + name + "! Your " + experience + " table setup for " + guests + " has been booked at Khyber Darbar.";
+                    
+                    // If discount code is provided, append to alert message
+                    if (discount !== "") {
+                        alertMessage += "\n\nDiscount Code '" + discount.toUpperCase() + "' has been successfully registered with your reservation!";
+                    }
+
+                    // Custom Premium browser alert activation
+                    alert(alertMessage);
+                    
+                    // Resetting inputs smoothly
+                    reservationForm.reset();
+                });
+            }
+            
+        });
+    </script>
+</body>
+</html>

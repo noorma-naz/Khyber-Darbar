@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khyber Darbar - Shahi Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #800020;    
+            --secondary-color: #D4AF37;  
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(20, 20, 20, 0.95);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body { 
+            font-family: var(--font-sans); 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+
+        .container { 
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .navbar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 999; 
+            padding: 1.5rem 0; 
+            transition: var(--transition-smooth); 
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .navbar__container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar__logo { 
+            font-family: var(--font-display); 
+            font-size: 1.8rem; 
+            color: var(--secondary-color); 
+            text-decoration: none; 
+            font-weight: 700; 
+        }
+
+        .navbar__menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 2rem; 
+        }
+
+        .navbar__link { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: var(--transition-smooth);
+        }
+
+        .navbar__link.active, .navbar__link:hover { 
+            color: var(--secondary-color); 
+        }
+
+        .navbar__actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+       
+        .navbar__toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .navbar__toggle .bar {
+            height: 2px;
+            width: 100%;
+            background-color: #fff;
+            transition: var(--transition-smooth);
+        }
+
+        
+        .menu-hero-text {
+            text-align: center;
+            padding: 180px 0 100px 0; 
+        }
+
+        .menu-hero-text h1 {
+            font-family: var(--font-display);
+            color: #ffffff;
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            /* Yahan se uppercase hata kar normal text style apply kiya hai */
+            text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+        }
+
+        .menu-hero-text p {
+           	    font-size: 1.2rem;
+              margin-bottom: 2rem;
+                color: #ccc;
+
+        }
+
+       
+        .category-title {
+            font-family: var(--font-display);
+            color: var(--secondary-color);
+            font-size: 2.6rem;
+            margin: 4rem 0 2rem 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+       
+        .slider-container {
+            position: relative;
+            margin-bottom: 4rem;
+            padding: 0 50px;
+        }
+
+        .slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .menu-slider {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        
+        .menu-item-card {
+            min-width: calc(33.333% - 14px);
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        @media (max-width: 992px) {
+            .menu-item-card { min-width: calc(50% - 10px); }
+        }
+        @media (max-width: 768px) {
+            .menu-item-card { min-width: 100%; }
+            .nav-menu-wrapper { display: none; }
+            .menu-hero-text h1 { font-size: 2.8rem; }
+        }
+
+        .menu-item-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        .card-img-box {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .menu-item-card:hover .card-img-box img {
+            transform: scale(1.08);
+        }
+
+        .card-details {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .item-title {
+            font-family: var(--font-display);
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .item-price {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .item-desc {
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-action-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .add-to-cart-btn {
+            background: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--secondary-color);
+            padding: 0.7rem 1.4rem;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--secondary-color);
+            color: #000;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        
+        .slider-control-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            z-index: 10;
+            transition: var(--transition-smooth);
+        }
+
+        .slider-control-btn:hover {
+            background: var(--secondary-color);
+            color: #000;
+        }
+
+        .ctrl-prev { left: 0; }
+        .ctrl-next { right: 0; }
+
+        .dine-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px dashed #aaa;
+            transition: var(--transition-smooth);
+        }
+
+        .dine-link:hover {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+     
+        footer {
+            background: #050505;
+            border-top: 2px solid var(--primary-color);
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-family: var(--font-display);
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col p {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: #fff; 
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-bottom: 0.6rem;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-col a:hover {
+            color: var(--secondary-color); 
+            padding-left: 5px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding-left: 0 !important;
+        }
+
+        .footer-socials a:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        
+        .view-cart-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary-color);
+            color: #000;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+            transition: var(--transition-smooth);
+        }
+        
+        .view-cart-floating:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">Khyber Darbar</a>
+            <ul class="navbar__menu">
+                <li><a href="index.html" class="navbar__link">Home</a></li>
+                <li><a href="menu.html" class="navbar__link active">Menu</a></li>
+                <li><a href="offers.html" class="navbar__link">Special Offers</a></li>
+                <li><a href="reservation.html" class="navbar__link">Reservation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+   
+    <a href="cart.html" class="view-cart-floating">
+        <i class="fas fa-shopping-bag"></i> Shahi Cart
+    </a>
+
+    <div class="container">
+        
+        <div class="menu-hero-text">
+            <!-- Yahan capitalize format apply kar diya hai -->
+            <h1>Our Shahi Menu</h1>
+            <p>Savor the authentic taste of premium ancestral culinary marvels</p>
+        </div>
+        <h2 class="category-title"><i class="fas fa-drumstick-bite"></i> Salty & Savory Selection</h2>
+        
+        <div class="slider-container">
+            <button class="slider-control-btn ctrl-prev" onclick="scrollMenu('saltySlider', -1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-control-btn ctrl-next" onclick="scrollMenu('saltySlider', 1)"><i class="fas fa-chevron-right"></i></button>
+            
+            <div class="slider-wrapper">
+                <div class="menu-slider" id="saltySlider">
+                    
+                  
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/Mutton shiwari.png" alt="Mutton Shinwari"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Mutton Shinwari</span>
+                                <span class="item-price">Rs. 2600</span>
+                            </div>
+                            <p class="item-desc">Cooked in premium organic fats with real rock salt, fresh tomatoes, and green chilies.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Mutton Shinwari', 2600)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/dum pukht.png" alt="Dum Pukht Biryani"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Dum Pukht Biryani</span>
+                                <span class="item-price">Rs. 1150</span>
+                            </div>
+                            <p class="item-desc">Premium long-grain basmati rice steamed slow with saffron and tender marinated beef chunks.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Dum Pukht Biryani', 1150)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/malai botti.png" alt="Chicken Malai Boti"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Chicken Malai Boti</span>
+                                <span class="item-price">Rs. 980</span>
+                            </div>
+                            <p class="item-desc">Charcoal grilled boneless chicken cubes drenched heavily in rich cream and yogurt marinade.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Chicken Malai Boti', 980)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/seekh kabbab.png" alt="Shahi Seekh Kabab"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Shahi Seekh Kabab</span>
+                                <span class="item-price">Rs. 850</span>
+                            </div>
+                            <p class="item-desc">Fine minced beef blended perfectly with secret royal spices and barbecued over open coals.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Shahi Seekh Kabab', 850)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/charsi karahi.png" alt="Peshawari Charsi Karahi"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Charsi Karahi</span>
+                                <span class="item-price">Rs. 2400</span>
+                            </div>
+                            <p class="item-desc">Authentic salt-based chicken karahi from the lanes of Peshawar, cooked till absolute perfection.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Charsi Karahi', 2400)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="category-title"><i class="fas fa-ice-cream"></i> Sugary & Dessert Marvels</h2>
+        
+        <div class="slider-container">
+            <button class="slider-control-btn ctrl-prev" onclick="scrollMenu('sugarySlider', -1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-control-btn ctrl-next" onclick="scrollMenu('sugarySlider', 1)"><i class="fas fa-chevron-right"></i></button>
+            
+            <div class="slider-wrapper">
+                <div class="menu-slider" id="sugarySlider">
+                    
+                    <!-- Card 1 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/zafarani kheer.png" alt="Zafrani Matka Kheer"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Zafrani Matka Kheer</span>
+                                <span class="item-price">Rs. 450</span>
+                            </div>
+                            <p class="item-desc">Slow-cooked creamy rice dessert enriched with saffron extracts, served cold in traditional clay pots.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Zafrani Matka Kheer', 450)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/shahi tukrey.png" alt="Shahi Tukray Platter"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Shahi Tukray Platter</span>
+                                <span class="item-price">Rs. 600</span>
+                            </div>
+                            <p class="item-desc">Golden-fried bread slices soaked completely in condensed cardamom milk, loaded with almonds.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Shahi Tukray Platter', 600)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/pista rabri.png" alt="Pista Rabri Kulfi"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Pista Rabri Kulfi</span>
+                                <span class="item-price">Rs. 350</span>
+                            </div>
+                            <p class="item-desc">Handmade authentic frozen dessert made with heavily reduced milk, pistachio chunks, and kewra.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Pista Rabri Kulfi', 350)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/gajar ka halwa.png" alt="Luxury Gajar Halwa"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Shahi Gajar Halwa</span>
+                                <span class="item-price">Rs. 550</span>
+                            </div>
+                            <p class="item-desc">Fresh winter carrots grated and roasted in unadulterated desi ghee, topped heavily with premium khoya.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Shahi Gajar Halwa', 550)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="menu-item-card">
+                        <div class="card-img-box"><img src="images/gulab jamun.png" alt="Gulab Jamun Plate"></div>
+                        <div class="card-details">
+                            <div class="item-meta">
+                                <span class="item-title">Gulab Jamun (3 Pcs)</span>
+                                <span class="item-price">Rs. 300</span>
+                            </div>
+                            <p class="item-desc">Warm, soft, and syrup-soaked deep fried dough balls served with a pinch of dry nut garnish.</p>
+                            <div class="card-action-row">
+                                <a href="reservation.html" class="dine-link">Book Dine-In</a>
+                                <button class="add-to-cart-btn" onclick="addToCart('Gulab Jamun (3 Pcs)', 300)">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 👣 SHAHI FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Khyber Darbar</h3>
+                <p>Bringing elite ancestral culinary legacy directly onto your modern dastarkhwan.</p>
+                <div class="footer-socials">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Nav</h3>
+                <a href="index.html">Shahi Home</a>
+                <a href="menu.html">Our Menu</a>
+                <a href="offers.html">Special Offers</a>
+                <a href="reservation.html">Book A Table</a>
+            </div>
+            <div class="footer-col">
+                <h3>Timing</h3>
+                <p>Monday - Sunday</p>
+                <p>12:00 PM - 02:00 AM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Khyber Darbar Luxury Restaurant. Crafted with Imperial Elegance.
+        </div>
+    </footer>
+
+    <!-- 🎯 JAVASCRIPT CONTROLLERS -->
+    <script>
+        const sliderIndices = { saltySlider: 0, sugarySlider: 0 };
+
+        function scrollMenu(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const cards = slider.querySelectorAll('.menu-item-card');
+            if (cards.length === 0) return;
+
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 20; 
+            const step = cardWidth + gap;
+
+            const wrapperWidth = slider.parentElement.offsetWidth;
+            const visibleCardsCount = Math.round(wrapperWidth / step) || 1;
+
+            const maxScrollableIndices = cards.length - visibleCardsCount;
+
+            sliderIndices[sliderId] += direction;
+
+            if (sliderIndices[sliderId] > maxScrollableIndices) {
+                sliderIndices[sliderId] = 0; 
+            } else if (sliderIndices[sliderId] < 0) {
+                sliderIndices[sliderId] = maxScrollableIndices > 0 ? maxScrollableIndices : 0; 
+            }
+
+            slider.style.transform = `translateX(-${sliderIndices[sliderId] * step}px)`;
+        }
+
+        window.addEventListener('resize', () => {
+            scrollMenu('saltySlider', 0);
+            scrollMenu('sugarySlider', 0);
+        });
+
+        // Universal Cart Integration with immediate redirection
+        window.addToCart = function(productName, productPrice) {
+            let currentCart = [];
+            try {
+                let existingData = localStorage.getItem("khyberCart") || localStorage.getItem("cart") || localStorage.getItem("KHYBER_DARBAR_CART");
+                currentCart = existingData ? JSON.parse(existingData) : [];
+                if (!Array.isArray(currentCart)) currentCart = [];
+            } catch(e) { currentCart = []; }
+            
+            currentCart = currentCart.filter(item => item && item.name && !isNaN(item.price));
+            const exist = currentCart.find(x => (x.name || '').trim().toLowerCase() === String(productName).trim().toLowerCase());
+            
+            if (exist) {
+                exist.qty = parseInt(exist.qty || exist.quantity || 1) + 1;
+            } else {
+                currentCart.push({ name: String(productName).trim(), price: parseInt(productPrice), qty: 1 });
+            }
+            
+            localStorage.setItem("khyberCart", JSON.stringify(currentCart));
+            localStorage.setItem("cart", JSON.stringify(currentCart));
+            localStorage.setItem("KHYBER_DARBAR_CART", JSON.stringify(currentCart));
+            
+            window.location.href = 'cart.html';
+        };
+    </script>
+</body>
+</html>

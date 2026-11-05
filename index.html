@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khyber Darbar | Pakistani Luxury Fine Dining</title>
+    <!-- Font Awesome Icons for Social Media and UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   
+    <div class="preloader">
+        <div class="preloader__logo">Khyber Darbar</div>
+        <div class="preloader__line"></div>
+    </div>
+
+    
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">Khyber Darbar</a>
+            <ul class="navbar__menu">
+                <li><a href="index.html" class="navbar__link active">Home</a></li>
+                <li><a href="menu.html" class="navbar__link">Menu</a></li>
+                <li><a href="offers.html" class="navbar__link">Special Offers</a></li>
+                <li><a href="reservation.html" class="navbar__link">Reservation</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="btn btn--secondary navbar__btn" onclick="window.location.href='reservation.html'">Book A Table</button>
+                <div class="navbar__toggle" id="mobileMenuBtn">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <header class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('images/hero1.png');">
+        <div class="hero__content">
+            <h3 class="hero__subtitle">Khush Amdeed to</h3>
+            <h1 class="hero__title">Experience Shahi Pakistani Dining <br><span class="typing-text">Like Never Before</span></h1>
+            <p class="hero__desc">Taste the finest traditional delicacies prepared by master luxury chefs using organic heritage recipes.</p>
+            <div class="hero__btns">
+                <button class="btn btn--primary" onclick="window.location.href='menu.html'">Explore Menu</button>
+                <button class="btn btn--secondary" onclick="window.location.href='reservation.html'">Book a Table</button>
+            </div>
+        </div>
+    </header>
+
+    
+    <section class="featured section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__subtitle">Khas Pakwan</span>
+                <h2 class="section-header__title">Featured Shahi Delicacies</h2>
+                <div class="section-header__line"></div>
+            </div>
+            
+            
+            <div class="featured-slider-container">
+                <button class="slider-btn slider-btn--left" id="slidePrev" aria-label="Previous dishes">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn slider-btn--right" id="slideNext" aria-label="Next dishes">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="featured-slider-wrapper">
+                    <div class="grid grid--slider" id="featuredDishesContainer">
+                        
+                           <div class="food-card">
+                            <div class="food-card__img-container">
+                                <img src="images/Mutton shiwari.png" alt="Premium Mutton Shinwari Karahi" class="food-card__img">
+                            </div>
+                            <div class="food-card__content">
+                                <div class="food-card__header">
+                                    <h3 class="food-card__title">Mutton Shinwari Karahi</h3>
+                                    <span class="food-card__price">Rs. 3450</span>
+                                </div>
+                                <p class="food-card__desc">Fresh organic mutton prepared with tomatoes and organic green chilies in pure desi ghee.</p>
+                                <div class="food-card__footer">
+                                    <span class="food-card__rating"><i class="fas fa-star"></i> 5.0 (Review)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                        <div class="food-card">
+                            <div class="food-card__img-container">
+                                <img src="images/dum pukht.png" alt="Shahi Dum Pukht Biryani" class="food-card__img">
+                            </div>
+                            <div class="food-card__content">
+                                <div class="food-card__header">
+                                    <h3 class="food-card__title">Dum Pukht Biryani</h3>
+                                    <span class="food-card__price">Rs. 1850</span>
+                                </div>
+                                <p class="food-card__desc">Long-grain basmati rice cooked with saffron-infused tender beef layers.</p>
+                                <div class="food-card__footer">
+                                    <span class="food-card__rating"><i class="fas fa-star"></i> 4.9 (Review)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                        <div class="food-card">
+                            <div class="food-card__img-container">
+                                <img src="images/malai botti.png" alt="Reshmi Malai Boti Platter" class="food-card__img">
+                            </div>
+                            <div class="food-card__content">
+                                <div class="food-card__header">
+                                    <h3 class="food-card__title">Malai Boti Platter</h3>
+                                    <span class="food-card__price">Rs. 1600</span>
+                                </div>
+                                <p class="food-card__desc">Succulent boneless chicken chunks marinated in cream, cheese, and subtle charcoal spices.</p>
+                                <div class="food-card__footer">
+                                    <span class="food-card__rating"><i class="fas fa-star"></i> 4.8 (Review)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div class="food-card">
+                            <div class="food-card__img-container">
+                                <img src="images/zafarani kheer.png" alt="Zafrani Matka Kheer" class="food-card__img">
+                            </div>
+                            <div class="food-card__content">
+                                <div class="food-card__header">
+                                    <h3 class="food-card__title">Zafrani Matka Kheer</h3>
+                                    <span class="food-card__price">Rs. 450</span>
+                                </div>
+                                <p class="food-card__desc">Traditional slow-reduced milk dessert infused with premium saffron strands and silver leaf.</p>
+                                <div class="food-card__footer">
+                                    <span class="food-card__rating"><i class="fas fa-star"></i> 5.0 (Review)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="features section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__subtitle">Hamari Khusoosiyat</span>
+                <h2 class="section-header__title">Why You Choose Us</h2>
+                <div class="section-header__line"></div>
+                <p class="section-header__desc-alt">We combine authentic heritage culinary crafts with fresh premium organic ingredients.</p>
+            </div>
+
+            <div class="grid grid--3-cols">
+                <!-- Feature Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="feature-card__title">Top Quality Chef</h3>
+                    <p class="feature-card__desc">Our kitchen hosts highly seasoned masters creating premium culinary marvels.</p>
+                </div>
+
+               
+                <div class="feature-card feature-card--active">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-card__title">Express Delivery</h3>
+                    <p class="feature-card__desc">Super fast delivery tracking ecosystem ensures meals arrive piping hot.</p>
+                </div>
+
+                
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-card__title">Fresh Ingredients</h3>
+                    <p class="feature-card__desc">Daily selected fresh local farm produce with zero artificial chemical additions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer class="footer">
+        <div class="container grid grid--4-cols">
+            <div class="footer__col">
+                <h3 class="footer__logo">Khyber Darbar</h3>
+                <p class="footer__text">Setting transcendent benchmarks in traditional culinary artistry and elite cultural hospitality across generations.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Our Menu</a></li>
+                    <li><a href="offers.html">Special Offers</a></li>
+                    <li><a href="reservation.html">Book A Table</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Timings</h4>
+                <p class="footer__text"><strong>Monday - Sunday:</strong><br>12:00 PM – 12:00 AM</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Contact</h4>
+                <p class="footer__text">Luxury District, Karachi, Pakistan<br>Phone: +92 21 111-KHYBER</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Khyber Darbar Luxury Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts Integration -->
+    <script src="script.js"></script>
+</body>
+</html>
